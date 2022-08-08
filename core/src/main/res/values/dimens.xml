@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <!-- Margin sizes. -->
+    <dimen name="margin_5">5dp</dimen>
+    <dimen name="margin_8">8dp</dimen>
+    <dimen name="margin_10">5dp</dimen>
+    <dimen name="margin_20">20dp</dimen>
+    <dimen name="margin_40">40dp</dimen>
+    <dimen name="margin_100">100dp</dimen>
+    <dimen name="margin_50">50dp</dimen>
+    <dimen name="margin_180">180dp</dimen>
+    <dimen name="margin_300">300dp</dimen>
+
+    <!-- Sizes -->
+    <dimen name="dimen_20">20dp</dimen>
+    <dimen name="dimen_24">24dp</dimen>
+    <dimen name="dimen_32">32dp</dimen>
+    <dimen name="dimen_48">48dp</dimen>
+    <dimen name="dimen_150">150dp</dimen>
+    <dimen name="dimen_300">300dp</dimen>
+
+    <!-- Text Sizes -->
+    <dimen name="text_12">16sp</dimen>
+    <dimen name="text_14">14sp</dimen>
+    <dimen name="text_16">16sp</dimen>
+    <dimen name="text_18">18sp</dimen>
+    <dimen name="text_24">24sp</dimen>
+    <dimen name="text_65">65sp</dimen>
+
+</resources>
