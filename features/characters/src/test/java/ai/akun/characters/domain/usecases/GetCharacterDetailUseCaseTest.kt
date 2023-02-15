@@ -3,7 +3,7 @@ package ai.akun.characters.domain.usecases
 import ai.akun.characters.domain.ICharactersRepository
 import ai.akun.characters.domain.model.CharacterDomainEntity
 import ai.akun.core.usecase.UseCaseResult
-import io.mockk.coEvery
+import io.mockk.every
 import io.mockk.mockk
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.single
@@ -26,25 +26,28 @@ class GetCharacterDetailUseCaseTest : KoinTest {
         modules(
             module {
                 factory { GetCharacterDetailUseCase(get()) }
-                single<ICharactersRepository> { mockk(relaxed = true) }
+                single<ICharactersRepository> { mockk(relaxed = false) }
             }
         )
     }
 
     @Test
-    fun `should return success`() = runTest {
-        val success = CharacterDomainEntity()
+    fun `should return Character result`() = runTest {
+        val expectedCharacter = CharacterDomainEntity()
+        val characterId = "5"
 
         //GIVEN
-        coEvery {
-            repository.getCharacterDetail("5")
-        }.returns(flowOf(success))
+        every {
+            repository.getCharacterDetail(characterId = characterId)
+        } returns flowOf(expectedCharacter)
+
+        //WHEN
+        val actualResult = getCharacterDetailUseCase(characterId).single()
 
         //THEN
         assertEquals(
-            UseCaseResult.Success(success),
-            getCharacterDetailUseCase("5").single()
+            /* expected = */ UseCaseResult.Success(expectedCharacter),
+            /* actual = */ actualResult
         )
     }
-
 }

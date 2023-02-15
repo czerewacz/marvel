@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface ICharactersRepository {
 
-    suspend fun getCharacters(): Flow<PagingData<CharacterDomainEntity>>
+    fun getCharacters(): Flow<PagingData<CharacterDomainEntity>>
 
-    suspend fun getCharacterDetail(characterId : String) : Flow<CharacterDomainEntity>
+    fun getCharacterDetail(characterId : String) : Flow<CharacterDomainEntity>
 }

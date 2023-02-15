@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.map
 class CharactersRepository(
     private val apiClient: MarvelApiClient
 ) : ICharactersRepository {
-    override suspend fun getCharacters(): Flow<PagingData<CharacterDomainEntity>> = Pager(
+    override fun getCharacters(): Flow<PagingData<CharacterDomainEntity>> = Pager(
         PagingConfig(
             pageSize = CHARACTERS_LOAD_SIZE,
             maxSize = 90,
@@ -25,8 +25,11 @@ class CharactersRepository(
         }
     ).flow
 
-    override suspend fun getCharacterDetail(characterId: String): Flow<CharacterDomainEntity> {
+    override fun getCharacterDetail(characterId: String): Flow<CharacterDomainEntity> {
         return apiClient.getCharacterDetail(characterId).map { baseResponse ->
+            baseResponse.data.results.map {
+                it.copy(description = "Hola" + it.description)
+            }
             baseResponse.data.results.first().toCharacterDomainEntity()
         }
     }

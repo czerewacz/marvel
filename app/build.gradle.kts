@@ -32,45 +32,46 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = JavaVersion.VERSION_11.toString()
     }
 }
 
 dependencies {
 
-    //Modules
+    // Modules
     implementation(project(BuildModules.CORE))
     implementation(project(BuildModules.Features.CHARACTERS))
 
-    //Android lifecycle
+    // Android lifecycle
     implementation(Dependencies.AndroidX.lifecycle)
     implementation(Dependencies.AndroidX.livedata)
     implementation(Dependencies.AndroidX.viewmodel)
 
-    //Android Navigation
+    // Android Navigation
     implementation(Dependencies.AndroidX.navigation)
     implementation(Dependencies.AndroidX.navigationUI)
 
-    //Ktx
+    // Ktx
     implementation(Dependencies.AndroidX.ktx)
 
-    //Android
+    // Android
     implementation(Dependencies.AndroidX.appcompat)
     implementation(Dependencies.Google.material)
     implementation(Dependencies.AndroidX.constraintLayout)
 
-    //Dependency Injection
+    // Dependency Injection
     implementation(Dependencies.DI.koin)
     implementation(Dependencies.DI.koinAndroid)
 
-    //Paging
+    // Paging
     implementation(Dependencies.AndroidX.paging)
 
-    //Coil
+    // Coil
     implementation(Dependencies.Coil.coilKt)
-
+    implementation("androidx.navigation:navigation-fragment-ktx:2.5.3")
+    implementation("androidx.navigation:navigation-ui-ktx:2.5.3")
 }

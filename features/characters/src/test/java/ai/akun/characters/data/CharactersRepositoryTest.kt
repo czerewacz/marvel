@@ -32,13 +32,19 @@ class CharactersRepositoryTest : KoinTest {
     @Test
     fun `should return character details`() = runTest {
         val response = TestResponse.baseResponse
+        val expectedResult = response.data.results.first().toCharacterDomainEntity()
 
         //GIVEN
         coEvery {
             apiClient.getCharacterDetail("5")
         }.returns((flowOf(response)))
 
-        assertEquals(response.data.results.first().toCharacterDomainEntity() , repository.getCharacterDetail("5").single())
+        //WHEN
+        val actualResult = repository.getCharacterDetail("5").single()
 
+        assertEquals(
+            /* expected = */ expectedResult,
+            /* actual = */ actualResult
+        )
     }
 }
