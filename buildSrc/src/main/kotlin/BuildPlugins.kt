@@ -9,4 +9,5 @@ object BuildPlugins {
     const val NAV_SAFE_ARGS = "androidx.navigation.safeargs.kotlin"
     const val KOTLIN_SERIALIZATION = "org.jetbrains.kotlin.plugin.serialization"
     const val KOTLIN_PARCELIZE = "kotlin-parcelize"
+    const val JETBRAINS_KOTLIN_JVM = "org.jetbrains.kotlin.jvm"
 }

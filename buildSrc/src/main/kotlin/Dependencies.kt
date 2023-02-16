@@ -36,6 +36,7 @@ object Dependencies {
 
         //Paging 3
         const val paging = "androidx.paging:paging-runtime:${DependenciesVersions.paging}"
+        const val pagingNonAndroid = "androidx.paging:paging-common:${DependenciesVersions.paging}"
     }
 
     object Google {

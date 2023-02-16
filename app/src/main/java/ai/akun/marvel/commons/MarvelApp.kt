@@ -1,8 +1,9 @@
 package ai.akun.marvel.commons
 
-import ai.akun.characters.di.charactersModule
+import ai.akun.character_data.di.characterDataModule
+import ai.akun.character_domain.di.characterDomainModule
+import ai.akun.character_presentation.di.characterPresentationModule
 import ai.akun.core.di.coreModule
-import ai.akun.core.network.di.networkModule
 import android.app.Application
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -20,8 +21,9 @@ class MarvelApp : Application() {
             modules(
                 listOf(
                     coreModule,
-                    networkModule,
-                    charactersModule
+                    characterDomainModule,
+                    characterDataModule,
+                    characterPresentationModule
                 )
             )
         }

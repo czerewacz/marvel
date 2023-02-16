@@ -5,31 +5,15 @@
     android:id="@+id/main_graph"
     app:startDestination="@id/splashFragment">
 
+    <include app:graph="@navigation/character_graph" />
+
     <fragment
         android:id="@+id/splashFragment"
         android:name="ai.akun.marvel.ui.splash.SplashFragment"
         android:label="fragment_splash"
-        tools:layout="@layout/fragment_splash" >
+        tools:layout="@layout/fragment_splash">
         <action
-            android:id="@+id/action_splashFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/homeFragment"
-        android:name="ai.akun.marvel.ui.home.HomeFragment"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
-        <action
-            android:id="@+id/action_homeFragment_to_characterDetailFragment"
-            app:destination="@id/characterDetailFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/characterDetailFragment"
-        android:name="ai.akun.marvel.ui.detail.CharacterDetailFragment"
-        android:label="fragment_character"
-        tools:layout="@layout/fragment_character" >
-        <argument
-            android:name="id"
-            app:argType="string" />
+            android:id="@+id/action_fragment_to_character_graph"
+            app:destination="@id/character_graph" />
     </fragment>
 </navigation>

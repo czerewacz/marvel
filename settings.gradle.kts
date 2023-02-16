@@ -16,5 +16,8 @@ rootProject.name = "Marvel"
 include(
     ":app",
     ":core",
-    ":features:characters"
+    ":features:character:character_domain",
+    ":features:character:character_data",
+    ":features:character:character_presentation"
 )
+

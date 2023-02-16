@@ -31,7 +31,7 @@ class SplashFragment : Fragment() {
     }
 
     private fun navigateToHome() {
-        val action = SplashFragmentDirections.actionSplashFragmentToHomeFragment()
+        val action = SplashFragmentDirections.actionFragmentToCharacterGraph()
         findNavController().navigate(action)
     }
 }

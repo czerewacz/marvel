@@ -43,8 +43,10 @@ android {
 dependencies {
 
     // Modules
-    implementation(project(BuildModules.CORE))
-    implementation(project(BuildModules.Features.CHARACTERS))
+    implementation(project(BuildModules.core))
+    implementation(project(BuildModules.characterDomain))
+    implementation(project(BuildModules.characterData))
+    implementation(project(BuildModules.characterPresentation))
 
     // Android lifecycle
     implementation(Dependencies.AndroidX.lifecycle)

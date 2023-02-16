@@ -1,6 +1,6 @@
 package ai.akun.core.network.clients
 
-import ai.akun.core.network.Endpoints
+import ai.akun.core.network.CoreNetwork
 import ai.akun.core.network.mock.MockResponse
 import ai.akun.core.network.mock.mockClient
 import kotlinx.coroutines.Dispatchers
@@ -21,7 +21,7 @@ import org.koin.test.inject
 
 class MarvelApiClientTest : KoinTest {
 
-    private val apiClient: MarvelApiClient by inject()
+    private val apiClient: ai.akun.character_data.remote.client.MarvelApiClient by inject()
     private val testDispatcher = UnconfinedTestDispatcher()
 
     @get:Rule
@@ -29,14 +29,14 @@ class MarvelApiClientTest : KoinTest {
         modules(
             module {
                 single {
-                    MarvelApiClient(
+                    ai.akun.character_data.remote.client.MarvelApiClient(
                         httpClient = mockClient,
                         backgroundDispatcher = testDispatcher,
                         apiKey = "",
                         hashKey = "",
-                        baseUrl = Endpoints.PROD_URL,
-                        getCharactersEndpoint = Endpoints.GET_CHARACTERS,
-                        getCharacterIdEndpoint = Endpoints.GET_CHARACTER_ID
+                        baseUrl = CoreNetwork.PROD_URL,
+                        getCharactersEndpoint = CoreNetwork.GET_CHARACTERS,
+                        getCharacterIdEndpoint = CoreNetwork.GET_CHARACTER_ID
                     )
                 }
             }

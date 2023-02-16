@@ -1,6 +1,4 @@
 <resources>
     <string name="app_name">Marvel</string>
 
-    <string name="default_error">Something went wrong. Please try again :(</string>
-    <string name="retry">Retry</string>
 </resources>

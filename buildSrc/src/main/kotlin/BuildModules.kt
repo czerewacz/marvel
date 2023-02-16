@@ -1,8 +1,9 @@
 object BuildModules {
 
-    const val CORE = ":core"
+    const val core = ":core"
 
-    object Features {
-        const val CHARACTERS = ":features:characters"
-    }
+    const val characterData = ":features:character:character_data"
+    const val characterDomain = ":features:character:character_domain"
+    const val characterPresentation = ":features:character:character_presentation"
+
 }

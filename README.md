@@ -22,8 +22,7 @@ API KEYS in the local.properties file in your Android studio as "HASH_KEY"  [Mor
 ## Module by feature
 The modules created here are dependent on the features we want to implement and the features
 are created by domain logic, in this case character lists retrieved from Marvel api.
-There is a core module holding the network dependencies and extensions the whole application is
-going to use.
+There is a kotlin "features" module including the kotlin module "character" which contains three modules divided by layers.
 
 <p align="center">
  <img src="resources/architecture-dependency.png">
@@ -32,25 +31,25 @@ going to use.
 
 ## Clean Architecture
 The feature modules are divided internally in clean architecture. Inside the feature modules exists:
+
 - a domain package for business logic,
 - data package for data retrieving,
-- presentation package for everything UI related (NOTE: For this challenge and keep the UI and Navigation simple
-  I left the UI Layouts in APP Module but as every module is an Android Library is good to also have the UI screen
-  on each module and work with nested navigation.
+- presentation package for everything UI related
 
-<p align="center">
- <img src="resources/clean-architecture.png">
-</p>
+## MVVM
+
+For the view I use MVVM: The ViewModel it's the one to hold the data and
+the state of the view, so the view only listens to the ViewState changes and pass the data to the
+ViewModel.
+
+## Navigation
+
+For the navigation I had implemented a nested graph navigation between modules.
 
 ## Dependency injection
 This is a must-have architecture implementation to be able to have re-usability of code and make testing easier.
 Im using Koin because it works with pure Kotlin and it can be used to scale the project to 
 a Kotlin Multi Platform state which Im very interested.
-
-## MVx
-For the view I use a combination of MVVM and MVI. The ViewModel it's the one to hold the data
-and the state of the view, so the view only listens to the ViewState changes and pass the data
-to the ViewModel
 
 ## BuildSrc + Kotlin DSL
 It helps the project by having all the dependencies in one place and allowing us to write gradle
@@ -89,7 +88,14 @@ Implemented Android Paging Library 3 to improve pagination reducing network usag
 
 ## Future Considerations
 - Migrate to Jetpack Compose with Single Activity and zero fragments (If not, implement viewModel data binding to clean the UI Controller)
+- Consider creating a CORE-UI package for scalability and maintainability.
+- Consider migrating API features to its own module (instead of having it in the feature or CORE) if
+   more features will be added that require network capabilities. Creating a separate module has the
+   advantage that it's easier to reuse since you don't need to include the whole core module in
+   another project, but rather only the API module.
+- Explore the possibility to implement exponential backoff patter for network retries.
 - Implement build variants to match company development lifecycle and also consider to add a Mock flavor in order to accelerate dev productivity while
   backend endpoints are not ready
 - Implement Pinterest Klint (https://github.com/pinterest/ktlint)  to do static code analysis and also add a Git hook that automatically runs ktlint on every push to the remote in order
   to ensure we never push unformatted code.
+- Testing: Increase coverages for the unit tests. Add UI tests using Espresso.
