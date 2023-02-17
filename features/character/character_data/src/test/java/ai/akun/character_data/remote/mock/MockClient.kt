@@ -1,4 +1,4 @@
-package ai.akun.core.network.mock
+package ai.akun.character_data.remote.mock
 
 import io.ktor.client.*
 import io.ktor.client.engine.mock.*

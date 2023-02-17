@@ -1,5 +1,7 @@
 package ai.akun.character_domain
 
+import ai.akun.character_domain.model.CharacterDomainEntity
+import ai.akun.character_domain.reposiroty.ICharactersRepository
 import ai.akun.character_domain.useCases.GetCharacterDetailUseCase
 import ai.akun.core.usecase.UseCaseResult
 import io.mockk.every
@@ -18,21 +20,21 @@ import org.koin.test.inject
 class GetCharacterDetailUseCaseTest : KoinTest {
 
     private val getCharacterDetailUseCase: GetCharacterDetailUseCase by inject()
-    private val repository: ai.akun.character_domain.reposiroty.ICharactersRepository by inject()
+    private val repository: ICharactersRepository by inject()
 
     @get:Rule
     val koinTestRule = KoinTestRule.create {
         modules(
             module {
                 factory { GetCharacterDetailUseCase(get()) }
-                single<ai.akun.character_domain.reposiroty.ICharactersRepository> { mockk(relaxed = false) }
+                single<ICharactersRepository> { mockk(relaxed = false) }
             }
         )
     }
 
     @Test
     fun `should return Character result`() = runTest {
-        val expectedCharacter = ai.akun.character_domain.model.CharacterDomainEntity()
+        val expectedCharacter = CharacterDomainEntity()
         val characterId = "5"
 
         //GIVEN

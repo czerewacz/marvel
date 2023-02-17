@@ -1,6 +1,7 @@
-package ai.akun.character_data
+package ai.akun.character_data.repository
 
 import ai.akun.character_data.mapper.toCharacterDomainEntity
+import ai.akun.character_data.remote.client.MarvelApiClient
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.flow.flowOf
@@ -16,15 +17,15 @@ import org.koin.test.inject
 
 class CharactersRepositoryTest : KoinTest {
 
-    private val apiClient: ai.akun.character_data.remote.client.MarvelApiClient by inject()
-    private val repository: ai.akun.character_data.repository.CharactersRepository by inject()
+    private val apiClient: MarvelApiClient by inject()
+    private val repository: CharactersRepository by inject()
 
     @get:Rule
     val koinTestRule = KoinTestRule.create {
         modules(
             module {
-                single<ai.akun.character_data.remote.client.MarvelApiClient> { mockk(relaxed = true) }
-                single { ai.akun.character_data.repository.CharactersRepository(get()) }
+                single<MarvelApiClient> { mockk(relaxed = true) }
+                single { CharactersRepository(get()) }
             }
         )
     }

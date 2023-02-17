@@ -1,11 +1,11 @@
-package ai.akun.character_data
+package ai.akun.character_data.remote.mock
 
 import ai.akun.character_data.remote.dto.*
 import java.util.*
 
-object TestResponse {
+object MockResponse {
 
-    private val dataResponseDto = DataResponseDto(
+    private val dataResponse = DataResponseDto(
         offset = 0,
         limit = 0,
         total = 0,
@@ -16,16 +16,18 @@ object TestResponse {
                 id = (0..10).random().toLong(),
                 name = randomString,
                 description = randomString,
-                thumbnail = CharacterThumbnailResponseDto(path = randomString, extension = randomString ),
-                comics = ComicsResponseDto(available = 0, items = emptyList(),)
+                thumbnail = CharacterThumbnailResponseDto(
+                    path = randomString,
+                    extension = randomString
+                ),
+                comics = ComicsResponseDto(available = 0, items = emptyList())
             )
         }
     )
 
-    val baseResponseDto = BaseResponseDto(
+    val baseResponse = BaseResponseDto(
         code = 0,
         status = "",
-        data = dataResponseDto
+        data = dataResponse
     )
-
 }
