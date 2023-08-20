@@ -2,6 +2,7 @@ package ai.akun.character_data.di
 
 import ai.akun.character_data.remote.CharacterEndpoints.GET_CHARACTERS
 import ai.akun.character_data.remote.CharacterEndpoints.GET_CHARACTER_ID
+import ai.akun.character_data.remote.client.MarvelApiClient
 import ai.akun.character_data.repository.CharactersRepository
 import ai.akun.character_domain.reposiroty.ICharactersRepository
 import ai.akun.core.BuildConfig
@@ -14,7 +15,7 @@ val characterDataModule = module {
     single<ICharactersRepository> { CharactersRepository(get()) }
 
     single {
-        ai.akun.character_data.remote.client.MarvelApiClient(
+        MarvelApiClient(
             httpClient = ProdHttpClient().httpClient,
             baseUrl = CoreNetwork.PROD_URL,
             apiKey = CoreNetwork.API_KEY,

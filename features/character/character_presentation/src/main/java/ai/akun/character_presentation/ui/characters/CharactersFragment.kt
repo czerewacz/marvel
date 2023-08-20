@@ -1,6 +1,7 @@
 package ai.akun.character_presentation.ui.characters
 
 
+import ai.akun.character_domain.model.CharacterDomainEntity
 import ai.akun.character_presentation.databinding.FragmentCharactersBinding
 import ai.akun.character_presentation.ui.characters.adapter.CharactersAdapter
 import ai.akun.character_presentation.ui.characters.adapter.CharactersLoadingStateAdapter
@@ -71,7 +72,7 @@ class CharactersFragment : Fragment() {
         }
     }
 
-    private fun navigateToCharacter(character: ai.akun.character_domain.model.CharacterDomainEntity) {
+    private fun navigateToCharacter(character: CharacterDomainEntity) {
         val action =
             CharactersFragmentDirections.actionCharactersFragmentToCharacterDetailFragment(character.id.toString())
 

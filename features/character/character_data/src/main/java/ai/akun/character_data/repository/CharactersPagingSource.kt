@@ -2,6 +2,7 @@ package ai.akun.character_data.repository
 
 import ai.akun.character_data.mapper.toCharacterDomainEntity
 import ai.akun.character_data.remote.client.MarvelApiClient
+import ai.akun.character_domain.model.CharacterDomainEntity
 import ai.akun.core.network.error.NetworkFailure
 import android.util.Log
 import androidx.paging.PagingSource
@@ -15,9 +16,9 @@ private const val INITIAL_LOAD_SIZE = 0
 private const val INITIAL_POSITION = 1
 
 class CharactersPagingSource(private val apiClient: MarvelApiClient) :
-    PagingSource<Int, ai.akun.character_domain.model.CharacterDomainEntity>() {
+    PagingSource<Int, CharacterDomainEntity>() {
 
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, ai.akun.character_domain.model.CharacterDomainEntity> {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, CharacterDomainEntity> {
         return try {
 
             val page = params.key ?: INITIAL_POSITION
@@ -61,7 +62,7 @@ class CharactersPagingSource(private val apiClient: MarvelApiClient) :
         }
     }
 
-    override fun getRefreshKey(state: PagingState<Int, ai.akun.character_domain.model.CharacterDomainEntity>): Int? {
+    override fun getRefreshKey(state: PagingState<Int, CharacterDomainEntity>): Int? {
         return state.anchorPosition?.let { anchorPosition ->
             state.closestPageToPosition(anchorPosition)?.nextKey
         }

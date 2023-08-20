@@ -1,5 +1,6 @@
 package ai.akun.character_presentation.ui.details
 
+import ai.akun.character_domain.model.CharacterDomainEntity
 import ai.akun.character_domain.useCases.GetCharacterDetailUseCase
 import ai.akun.core.usecase.UseCaseResult
 import androidx.lifecycle.*
@@ -16,8 +17,8 @@ class CharacterDetailViewModel(
     private val _characterId = MutableLiveData<String>()
     val characterId: LiveData<String> = _characterId
 
-    private val _character = MutableLiveData<ai.akun.character_domain.model.CharacterDomainEntity>()
-    val character: LiveData<ai.akun.character_domain.model.CharacterDomainEntity> = _character
+    private val _character = MutableLiveData<CharacterDomainEntity>()
+    val character: LiveData<CharacterDomainEntity> = _character
 
     private val _error = MutableLiveData<String>()
     val error: LiveData<String> = _error

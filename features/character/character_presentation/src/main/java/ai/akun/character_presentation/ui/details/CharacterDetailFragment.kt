@@ -1,5 +1,6 @@
 package ai.akun.character_presentation.ui.details
 
+import ai.akun.character_domain.model.CharacterDomainEntity
 import ai.akun.character_presentation.databinding.FragmentCharacterDetailsBinding
 import ai.akun.character_presentation.extensions.toLandscape
 import ai.akun.core.extensions.gone
@@ -70,7 +71,7 @@ class CharacterDetailFragment : Fragment() {
         else binding.errorLayout.gone()
     }
 
-    private fun bindData(character: ai.akun.character_domain.model.CharacterDomainEntity) {
+    private fun bindData(character: CharacterDomainEntity) {
         with(binding) {
             collapsingLayout.apply {
                 setExpandedTitleColor(Color.WHITE)

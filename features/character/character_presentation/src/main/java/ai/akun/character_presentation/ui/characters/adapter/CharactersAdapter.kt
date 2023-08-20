@@ -1,13 +1,14 @@
 package ai.akun.character_presentation.ui.characters.adapter
 
+import ai.akun.character_domain.model.CharacterDomainEntity
 import ai.akun.character_presentation.ui.characters.viewholder.CharacterViewHolder
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 
-class CharactersAdapter(private val listener: (ai.akun.character_domain.model.CharacterDomainEntity) -> Unit) :
-    PagingDataAdapter<ai.akun.character_domain.model.CharacterDomainEntity, RecyclerView.ViewHolder>(
+class CharactersAdapter(private val listener: (CharacterDomainEntity) -> Unit) :
+    PagingDataAdapter<CharacterDomainEntity, RecyclerView.ViewHolder>(
         CharacterDiffCallBack()
     ) {
 
@@ -27,17 +28,17 @@ class CharactersAdapter(private val listener: (ai.akun.character_domain.model.Ch
         return CharacterViewHolder.create(parent)
     }
 
-    class CharacterDiffCallBack : DiffUtil.ItemCallback<ai.akun.character_domain.model.CharacterDomainEntity>() {
+    class CharacterDiffCallBack : DiffUtil.ItemCallback<CharacterDomainEntity>() {
         override fun areItemsTheSame(
-            oldItem: ai.akun.character_domain.model.CharacterDomainEntity,
-            newItem: ai.akun.character_domain.model.CharacterDomainEntity
+            oldItem: CharacterDomainEntity,
+            newItem: CharacterDomainEntity
         ): Boolean {
             return (oldItem.id == newItem.id)
         }
 
         override fun areContentsTheSame(
-            oldItem: ai.akun.character_domain.model.CharacterDomainEntity,
-            newItem: ai.akun.character_domain.model.CharacterDomainEntity
+            oldItem: CharacterDomainEntity,
+            newItem: CharacterDomainEntity
         ): Boolean {
             return oldItem == newItem
         }

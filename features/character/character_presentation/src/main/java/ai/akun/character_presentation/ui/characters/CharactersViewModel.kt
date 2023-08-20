@@ -1,5 +1,6 @@
 package ai.akun.character_presentation.ui.characters
 
+import ai.akun.character_domain.model.CharacterDomainEntity
 import ai.akun.character_domain.useCases.GetCharactersUseCase
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -14,8 +15,8 @@ class CharactersViewModel(
     private val getCharactersUseCase: GetCharactersUseCase
 ) : ViewModel() {
 
-    private val _characters = MutableLiveData<PagingData<ai.akun.character_domain.model.CharacterDomainEntity>>()
-    val characters: LiveData<PagingData<ai.akun.character_domain.model.CharacterDomainEntity>> = _characters
+    private val _characters = MutableLiveData<PagingData<CharacterDomainEntity>>()
+    val characters: LiveData<PagingData<CharacterDomainEntity>> = _characters
 
     fun getCharacters() {
         viewModelScope.launch {

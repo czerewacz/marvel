@@ -1,5 +1,6 @@
 package ai.akun.character_presentation.ui.details
 
+import ai.akun.character_domain.model.CharacterDomainEntity
 import android.content.Context
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatTextView
@@ -12,7 +13,7 @@ class CharacterDetailsView @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : AppCompatTextView(context, attrs, defStyleAttr) {
 
-    fun setCharacter(character: ai.akun.character_domain.model.CharacterDomainEntity) = with(character) {
+    fun setCharacter(character: CharacterDomainEntity) = with(character) {
         text = buildSpannedString {
 
             bold { append("Comics Available: ") }
